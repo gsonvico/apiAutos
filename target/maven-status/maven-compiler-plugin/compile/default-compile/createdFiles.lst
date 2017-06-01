@@ -1,0 +1,5 @@
+com\utn\labv\Model\Auto.class
+com\utn\labv\App.class
+com\utn\labv\ListAutos\DAOAutos.class
+com\utn\labv\Model\Marca.class
+com\utn\labv\Controller\AutoController.class
