@@ -12,6 +12,8 @@ public class Auto {
     private String modelo;
     private Marca marca;
 
+    public Auto(){}
+
     public Auto(String modelo, Marca marca, double kilometros, int anio)
     {
         patente=++id;

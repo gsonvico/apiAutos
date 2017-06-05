@@ -5,7 +5,9 @@ import com.utn.labv.Model.Auto;
 import com.utn.labv.Model.Marca;
 import org.omg.CORBA.PUBLIC_MEMBER;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,12 +42,18 @@ public class AutoController {
         return listAutos.byMarca(new Marca(marca));
     }
 
-    // TODO POST auto
-    @RequestMapping(value="/Auto", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void addAuto(@RequestBody Auto auto)
-    {
 
-        listAutos.addAuto(new Auto(auto.getModelo(), auto.getMarca(), auto.getKilometros(), auto.getAnio()));
+    @RequestMapping(value="/Auto", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity addAuto(@RequestBody Auto auto)
+    {
+        try {
+            listAutos.addAuto(new Auto(auto.getModelo(), auto.getMarca(), auto.getKilometros(), auto.getAnio()));
+            return new ResponseEntity(HttpStatus.CREATED);
+        }catch (Exception e)
+        {
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
     }
 
 }

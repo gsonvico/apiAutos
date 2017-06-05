@@ -6,6 +6,8 @@ package com.utn.labv.Model;
 public class Marca {
     private String descripcion;
 
+    public Marca(){}
+
     public Marca(String descripcion)
     {
         this.descripcion=descripcion;
