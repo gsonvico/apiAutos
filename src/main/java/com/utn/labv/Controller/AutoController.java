@@ -27,18 +27,25 @@ public class AutoController {
         return listAutos.byAll();
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/Autos/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public Auto byId(@PathVariable ("id") Integer id){
+    public Auto byId(@PathVariable("id") Integer id){
         return listAutos.byId(id);
     }
 
-    @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/byMarca", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public Enumeration<Auto> byMarca(@RequestParam(value="marca") Marca marca)
+    public Enumeration<Auto> byMarca(@RequestParam(value="marca") String marca)
     {
-        return listAutos.byMarca(marca);
+        return listAutos.byMarca(new Marca(marca));
     }
 
     // TODO POST auto
+    @RequestMapping(value="/Auto", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void addAuto(@RequestBody Auto auto)
+    {
+
+        listAutos.addAuto(new Auto(auto.getModelo(), auto.getMarca(), auto.getKilometros(), auto.getAnio()));
+    }
+
 }

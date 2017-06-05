@@ -76,4 +76,9 @@ public class DAOAutos {
         }
         return rta.elements();
     }
+
+    public void addAuto(Auto a)
+    {
+        listAutos.put(a.getPatente(),a);
+    }
 }

@@ -60,4 +60,9 @@ public class Auto {
     public void setMarca(Marca marca) {
         this.marca = marca;
     }
+
+    public String toString()
+    {
+        return getMarca()+" "+getModelo()+" "+getPatente()+" "+getAnio()+" "+getKilometros();
+    }
 }
