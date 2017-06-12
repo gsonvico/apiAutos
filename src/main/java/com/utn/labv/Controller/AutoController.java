@@ -35,7 +35,7 @@ public class AutoController {
         return listAutos.byId(id);
     }
 
-    @RequestMapping(value = "/byMarca", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/Autos/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public Enumeration<Auto> byMarca(@RequestParam(value="marca") String marca)
     {
@@ -43,7 +43,7 @@ public class AutoController {
     }
 
 
-    @RequestMapping(value="/Auto", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value="/Autos", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity addAuto(@RequestBody Auto auto)
     {
         try {
